@@ -106,7 +106,7 @@ public class User {
 				String username = rs.getString("username");
 				String password = rs.getString("password");
 				// Add a row into the html table
-				output += "<tr ><td>" + userId + "</td>";
+				output += "<tr ><td><input id='hidItemIDUpdate' name='hidItemIDUpdate' type='hidden' value='" + userId + "</td>";
 				output += "<td>" + accountNo + "</td>";
 				output += "<td>" + name + "</td>";
 				output += "<td>" + address + "</td>";
@@ -116,9 +116,8 @@ public class User {
 				output += "<td>" + username + "</td>";
 				output += "<td>" + password + "</td>";
 				// buttons
-				output += "<input name='itemID' type='hidden' "
-						+ " value='" + userId + "'>"
-						+ "</form></td></tr>";
+				output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' data-itemid='"+ userId + "'>" + "</td>"
+						+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-itemid='"+ userId + "'>" + "</td></tr>";
 			}
 			con.close();
 			// Complete the html table

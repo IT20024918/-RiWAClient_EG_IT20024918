@@ -55,13 +55,15 @@ public class User {
 					//execute the statement
 					 preparedStmt.execute();
 					 con.close();
-					 output = "User data Inserted successfully";
+					 String newUsers = readUserDetails();
+						output = "{\"status\":\"success\", \"data\": \"" +
+								newUsers + "\"}";
 		    		
 		    	}
 			catch (Exception e)
 			{
-			output = "Error while inserting";
-			System.err.println(e.getMessage());
+				output = "{\"status\":\"error\", \"data\": \"Error while inserting the user.\"}";
+				System.err.println(e.getMessage());
 			}
 	return output;
 	}
@@ -81,12 +83,13 @@ public class User {
 			// Prepare the html table to be displayed
 			output = "<table border='1'>"
 					+ "<tr><th>User ID</th>"
-					+ "<th>Account Number</th>"
+					+ "<th>User ID</th>"
 					+"<th>Name</th><th>Address</th><th>NIC</th>"
 					+ "<th>Email</th>"
 					+ "<th>Phone</th>"
 					+ "<th>UserName</th>"
-					+ "<th>Password</th>";
+					+ "<th>Password</th> <th>Update</th><th>Remove</th></tr>";
+			
 			String query = "select * from user";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);

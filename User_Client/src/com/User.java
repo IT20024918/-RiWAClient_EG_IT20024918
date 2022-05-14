@@ -134,7 +134,7 @@ public class User {
 	
 	//view user details by using the ID
 
-	public String getUserDetails(String userID)
+/*	public String getUserDetails(String userID)
 
 	{
 		String output = "";
@@ -190,7 +190,7 @@ public class User {
 			System.err.println(e.getMessage());
 		}
 		return output;
-	}
+	}*/
 	 
 	 public String updateUserDetails(String userId,String accountNo,String name,String address,String NIC, String email, String phone, String username, String password)
 	   {
@@ -218,12 +218,14 @@ public class User {
 			   // execute the statement
 			   preparedStmt.execute();
 			   con.close();
-			   output = "Updated user details successfully";
+			   String newUsers = readUserDetails();
+				output = "{\"status\":\"success\", \"data\": \"" +
+						newUsers + "\"}";
 			   }
 		    catch (Exception e)
 			{
-			   output = "Error while updating the user";
-			   System.err.println(e.getMessage());
+		    	output = "{\"status\":\"error\", \"data\": \"Error while updating the user.\"}";
+				System.err.println(e.getMessage());
 			}
 		    return output;
 		    }
@@ -250,12 +252,14 @@ public class User {
 			 // execute the statement
 			 preparedStmt.execute();
 			 con.close();
-			 output = "User account Deleted successfully";
+			 String newUsers = readUserDetails();
+				output = "{\"status\":\"success\", \"data\": \"" +
+						newUsers + "\"}";
 		 }
 		 catch (Exception e)
 		 {
-			 output = "Error while deleting the user";
-			 System.err.println(e.getMessage());
+			 output = "{\"status\":\"error\", \"data\": \"Error while deleting the user.\"}";
+				System.err.println(e.getMessage());
 		 }
 		 return output;
 	 }

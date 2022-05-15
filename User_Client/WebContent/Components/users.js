@@ -169,6 +169,45 @@ if ($("#Name").val().trim() == "")
 return "Insert Name";
 }
 
+//Address
+if ($("#Address").val().trim() == "")
+{
+return "Insert Address";
+}
+
+//NIC
+if ($("#NIC").val().trim() == "")
+{
+return "Insert NIC";
+}
+
+//EMAIL
+if ($("#Email").val().trim() == "")
+{
+return "Insert Email";
+}
+
+//PHONE
+if ($("#PHONE").val().trim() == "")
+{
+return "Insert Phone";
+}
+
+//USERNAME
+if ($("#Username").val().trim() == "")
+{
+return "Insert Username";
+}
+
+//NAME
+if ($("#Password").val().trim() == "")
+{
+return "Insert Password";
+}
+
+
+
+
 
 
 return true;

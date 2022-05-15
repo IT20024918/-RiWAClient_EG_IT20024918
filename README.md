@@ -4,11 +4,11 @@ This Repo contains the RiWA Client for the User Service Created in one of the pr
 
 **Used Technologies:**
 
-Jersey Client API
-jQuery
-AJAX
-JSP and Servlets
-JSON
+1. jQuery
+2. AJAX
+3. JSP and Servlets
+4. JSON
+
 Clone Requirements:
 
 Eclipse (one of the versions which supports JRE 1.8 or above)

@@ -82,13 +82,13 @@ public class User {
 			}
 			// Prepare the html table to be displayed
 			output = "<table border='1' style=\"font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; radius: 10px\">"
-					+ "<tr><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">User ID</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">Account Number</th>"
-					+"<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">Name</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; color: black;\">Address</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;color: black;\">NIC</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; color: black;\">Email</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">Phone</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">UserName</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">Password</th> <th>Update</th><th>Remove</th></tr>";
+					+ "<tr><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">User ID</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Account Number</th>"
+					+"<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Name</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Address</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">NIC</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Email</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Phone</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">UserName</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Password</th> <th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Update</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Remove</th></tr>";
 			String query = "select * from user";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);

@@ -13,10 +13,32 @@
 <link rel="stylesheet" href="Views/design.css">
 </head>
 <body>
-<div> <input id="btnLogout" name="btnLogout" type="button" value="Logout"
- class="btn btn-primary"></div>
+ 
+ 
+<section class="sub-header">
+<nav>
+<a href="index.html"><img src="Media/EG.png"></a>
+<div class="title">
+<h1>ELECTROGRID</h1>
+</div>
+<div class="nav-links" id="navLinks">
+<i class="fa fa-times" onclick="hideMenu()"></i>
+<ul>
+<li><a href="">OVERVIEW</a></li>
+<li><a href="">SERVICES</a></li>
+<li><a href="">EMERGENCIES</a></li>
+<li><a href="">CONTACT</a></li>
+<li> <input id="btnLogout" name="btnLogout" type="button" value="Logout"
+ class="btn btn-primary"></li>
+</ul> </div>
+<i class="fa fa-bars" onclick="showMenu()"></i>
+</nav>
+<h1>User Management</h1></section>
+<br>
+
+ 
 <div class="container"><div class="row"><div class="col-6">
-<h1 align="center">User Management</h1>
+
 
  
  <form id="formItem" name="formItem">
@@ -44,6 +66,7 @@
  <br>Password:
  <input id="Password" name="Password" type="text"
  class="form-control form-control-sm">
+ <br><br>
  <input id="btnSave" name="btnSave" type="button" value="Save"
  class="btn btn-primary">
  <input type="hidden" id="hidItemIDSave"

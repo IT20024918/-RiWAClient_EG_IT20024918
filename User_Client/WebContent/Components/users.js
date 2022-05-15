@@ -51,13 +51,13 @@ $(document).on("click", ".btnUpdate", function(event)
 {
 $("#hidItemIDSave").val($(this).data("itemid"));
 $("#accountNo").val($(this).closest("tr").find('td:eq(1)').text());
-$("#Name").val($(this).closest("tr").find('td:eq(2)').text());
-$("#Address").val($(this).closest("tr").find('td:eq(3)').text());
-$("#NIC").val($(this).closest("tr").find('td:eq(4)').text());
-$("#Email").val($(this).closest("tr").find('td:eq(5)').text());
-$("#Phone").val($(this).closest("tr").find('td:eq(6)').text());
-$("#Username").val($(this).closest("tr").find('td:eq(7)').text());
-$("#Password").val($(this).closest("tr").find('td:eq(8)').text());
+$("#Name").val(decodeURI(($(this).closest("tr").find('td:eq(2)').text())));
+$("#Address").val(decodeURI(($(this).closest("tr").find('td:eq(3)').text())));
+$("#NIC").val(decodeURI(($(this).closest("tr").find('td:eq(4)').text())));
+$("#Email").val(decodeURI(($(this).closest("tr").find('td:eq(5)').text())));
+$("#Phone").val(decodeURI(($(this).closest("tr").find('td:eq(6)').text())));
+$("#Username").val(decodeURI(($(this).closest("tr").find('td:eq(7)').text())));
+$("#Password").val(decodeURI(($(this).closest("tr").find('td:eq(8)').text())));
 });
 
 
@@ -91,37 +91,32 @@ onItemDeleteComplete(response.responseText, status);
 // CLIENT-MODEL================================================================
 
 
-
-
-
-
-
 function onItemSaveComplete(response, status)
 {
-if (status == "success")
-{
-var resultSet = JSON.parse(response);
-if (resultSet.status.trim() == "success")
-{
-$("#alertSuccess").text("Successfully saved.");
-$("#alertSuccess").show();
-$("#divItemsGrid").html(resultSet.data);
-} else if (resultSet.status.trim() == "error")
-{
-$("#alertError").text(resultSet.data);
-$("#alertError").show();
-}
-} else if (status == "error")
-{
-$("#alertError").text("Error while saving.");
-$("#alertError").show();
-} else
-{
-$("#alertError").text("Unknown error while saving..");
-$("#alertError").show();
-}
-$("#hidItemIDSave").val("");
-$("#formItem")[0].reset();
+	if (status == "success")
+	{
+		var resultSet = JSON.parse(response);
+		if (resultSet.status.trim() == "success")
+		{
+			$("#alertSuccess").text("Successfully saved.");
+			$("#alertSuccess").show();
+			$("#divItemsGrid").html(resultSet.data);
+		} else if (resultSet.status.trim() == "error")
+		{
+			$("#alertError").text(resultSet.data);
+			$("#alertError").show();
+		}
+	} else if (status == "error")
+	{
+		$("#alertError").text("Error while saving.");
+		$("#alertError").show();
+	} else
+	{
+		$("#alertError").text("Unknown error while saving..");
+		$("#alertError").show();
+	}
+	$("#hidItemIDSave").val("");
+	$("#formItem")[0].reset();
 }
 
 
@@ -132,29 +127,30 @@ $("#formItem")[0].reset();
 
 function onItemDeleteComplete(response, status)
 {
-if (status == "success")
-{
-var resultSet = JSON.parse(response);
-if (resultSet.status.trim() == "success")
-{
-$("#alertSuccess").text("Successfully deleted.");
-$("#alertSuccess").show();
-$("#divItemsGrid").html(resultSet.data);
-} else if (resultSet.status.trim() == "error")
-{
-$("#alertError").text(resultSet.data);
-$("#alertError").show();
+	if (status == "success")
+	{
+		var resultSet = JSON.parse(response);
+		if (resultSet.status.trim() == "success")
+		{
+			$("#alertSuccess").text("Successfully deleted.");
+			$("#alertSuccess").show();
+			$("#divItemsGrid").html(resultSet.data);
+		} else if (resultSet.status.trim() == "error")
+		{
+			$("#alertError").text(resultSet.data);
+			$("#alertError").show();
+		}
+	} else if (status == "error")
+	{
+		$("#alertError").text("Error while deleting.");
+		$("#alertError").show();
+	} else
+	{
+		$("#alertError").text("Unknown error while deleting..");
+		$("#alertError").show();
+	}
 }
-} else if (status == "error")
-{
-$("#alertError").text("Error while deleting.");
-$("#alertError").show();
-} else
-{
-$("#alertError").text("Unknown error while deleting..");
-$("#alertError").show();
-}
-}
+
 function validateItemForm()
 {
 // CODE
@@ -163,13 +159,11 @@ if ($("#accountNo").val().trim() == "")
 return "Insert Account No";
 }
 
-// NAME
 if ($("#Name").val().trim() == "")
 {
 return "Insert Name";
 }
 
-//Address
 if ($("#Address").val().trim() == "")
 {
 return "Insert Address";
@@ -186,28 +180,6 @@ if ($("#Email").val().trim() == "")
 {
 return "Insert Email";
 }
-
-//PHONE
-if ($("#PHONE").val().trim() == "")
-{
-return "Insert Phone";
-}
-
-//USERNAME
-if ($("#Username").val().trim() == "")
-{
-return "Insert Username";
-}
-
-//NAME
-if ($("#Password").val().trim() == "")
-{
-return "Insert Password";
-}
-
-
-
-
 
 
 return true;

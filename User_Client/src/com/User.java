@@ -82,13 +82,13 @@ public class User {
 			}
 			// Prepare the html table to be displayed
 			output = "<table border='1' style=\"font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; radius: 10px\">"
-					+ "<tr><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">User ID</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Account Number</th>"
-					+"<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Name</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Address</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">NIC</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Email</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Phone</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">UserName</th>"
-					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Password</th> <th>Update</th><th>Remove</th></tr>";
+					+ "<tr><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">User ID</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">Account Number</th>"
+					+"<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">Name</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; color: black;\">Address</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;color: black;\">NIC</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; color: black;\">Email</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">Phone</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">UserName</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left;  color: black;\">Password</th> <th>Update</th><th>Remove</th></tr>";
 			String query = "select * from user";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -138,6 +138,13 @@ public class User {
 	 public String updateUserDetails(String userId,String accountNo,String name,String address,String NIC, String email, String phone, String username, String password)
 	   {
 		   String output = "";
+		   String decodename = java.net.URLDecoder.decode(name);
+		   String decodeaddress = java.net.URLDecoder.decode(address);
+		   String decodeNIC = java.net.URLDecoder.decode(NIC);
+		   String decodeemail = java.net.URLDecoder.decode(email);
+		   String decodephone = java.net.URLDecoder.decode(phone);
+		   String decodeusername = java.net.URLDecoder.decode(username);
+		   String decodepassword = java.net.URLDecoder.decode(password);
 		   try
 			   {
 			   Connection con = connect();
@@ -150,13 +157,13 @@ public class User {
 			   PreparedStatement preparedStmt = con.prepareStatement(query);
 			   // binding values
 			   preparedStmt.setString(1, accountNo);
-			   preparedStmt.setString(2, name);
-			   preparedStmt.setString(3, address);
-			   preparedStmt.setString(4, NIC);
-			   preparedStmt.setString(5, email);
-			   preparedStmt.setString(6, phone);
-			   preparedStmt.setString(7, username);
-			   preparedStmt.setString(8, password);
+			   preparedStmt.setString(2, decodename);
+			   preparedStmt.setString(3, decodeaddress);
+			   preparedStmt.setString(4, decodeNIC);
+			   preparedStmt.setString(5, decodeemail);
+			   preparedStmt.setString(6, decodephone);
+			   preparedStmt.setString(7, decodeusername);
+			   preparedStmt.setString(8, decodepassword);
 			   preparedStmt.setInt(9, Integer.parseInt(userId));
 			   // execute the statement
 			   preparedStmt.execute();

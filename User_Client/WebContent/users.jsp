@@ -10,12 +10,13 @@
 <script src="Components/jquery-3.6.0.min.js"></script>
 <script src="Components/users.js"></script>
 <script src="Components/auth.js"></script>
+<link rel="stylesheet" href="Views/design.css">
 </head>
 <body>
 <div> <input id="btnLogout" name="btnLogout" type="button" value="Logout"
  class="btn btn-primary"></div>
 <div class="container"><div class="row"><div class="col-6">
-<h1>User Management</h1>
+<h1 align="center">User Management</h1>
 
  
  <form id="formItem" name="formItem">

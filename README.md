@@ -9,8 +9,8 @@ This Repo contains the RiWA Client for the User Service Created in one of the pr
 3. JSP and Servlets
 4. JSON
 
-Clone Requirements:
+**Clone Requirements:**
 
-Eclipse (one of the versions which supports JRE 1.8 or above)
-Maven
-Apache Tomcat Server 9
+1. Eclipse (one of the versions which supports JRE 1.8 or above)
+2. Maven
+3. Apache Tomcat Server 9

@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AuthAPI
@@ -13,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AuthAPI")
 public class AuthAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
+	Login userObj = new Login();       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,10 +35,26 @@ public class AuthAPI extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+			{
+			 HttpSession session = request.getSession();
+			 String authStatus = userObj.login(request.getParameter("txtUsername"),
+			 request.getParameter("txtPassword"));
+			 String output = "";
+			if (authStatus.equals("success"))
+			 {
+			 output = "{\"status\":\"success\", \"data\": \"\"}";
+			 session.setAttribute("Username",
+			 request.getParameter("txtUsername"));
+			 }
+			else
+			 {
+			 output = "{\"status\":\"error\", \"data\": \"" + authStatus + "\"}";
+			 }
+			 response.getWriter().write(output);
+			}
+
 
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
@@ -48,8 +66,11 @@ public class AuthAPI extends HttpServlet {
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+			 throws ServletException, IOException
+			{
+			 HttpSession session = request.getSession();
+			session.invalidate();
+			response.getWriter().write("success");
+			}
 }

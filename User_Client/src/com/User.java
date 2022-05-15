@@ -28,6 +28,7 @@ public class User {
 
 	return con;
 	}
+
 	
 	
 	public String RegisterUser(String accountNo,String name,String address,String NIC, String email, String phone, String username, String password) {
@@ -70,7 +71,6 @@ public class User {
 
 	
 	public String readUserDetails()
-
 	{
 		String output = "";
 		try
@@ -81,15 +81,14 @@ public class User {
 				return "Error while connecting to the database for reading.";
 			}
 			// Prepare the html table to be displayed
-			output = "<table border='1'>"
-					+ "<tr><th>User ID</th>"
-					+ "<th>User ID</th>"
-					+"<th>Name</th><th>Address</th><th>NIC</th>"
-					+ "<th>Email</th>"
-					+ "<th>Phone</th>"
-					+ "<th>UserName</th>"
-					+ "<th>Password</th> <th>Update</th><th>Remove</th></tr>";
-			
+			output = "<table border='1' style=\"font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; radius: 10px\">"
+					+ "<tr><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">User ID</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Account Number</th>"
+					+"<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Name</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Address</th><th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">NIC</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Email</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Phone</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">UserName</th>"
+					+ "<th style=\"padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; color: white;\">Password</th> <th>Update</th><th>Remove</th></tr>";
 			String query = "select * from user";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -105,8 +104,10 @@ public class User {
 				String phone = rs.getString("phone");
 				String username = rs.getString("username");
 				String password = rs.getString("password");
-				// Add a row into the html table
-				output += "<tr ><td><input id='hidItemIDUpdate' name='hidItemIDUpdate' type='hidden' value='" + userId + "</td>";
+				// Add into the html table
+				output += "<tr><td><input id='hidItemIDUpdate' name='hidItemIDUpdate' type='hidden' value='" + userId
+						+ "'>" +  "</td></tr>";
+				output += "<td>" + userId + "</td>";
 				output += "<td>" + accountNo + "</td>";
 				output += "<td>" + name + "</td>";
 				output += "<td>" + address + "</td>";
@@ -115,6 +116,7 @@ public class User {
 				output += "<td>" + phone + "</td>";
 				output += "<td>" + username + "</td>";
 				output += "<td>" + password + "</td>";
+				
 				// buttons
 				output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' data-itemid='"+ userId + "'>" + "</td>"
 						+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-itemid='"+ userId + "'>" + "</td></tr>";
@@ -125,73 +127,14 @@ public class User {
 		}
 		catch (Exception e)
 		{
-			output = "Error while reading the user details"
-					+ ".";
+			output = "Error while reading the user";
 			System.err.println(e.getMessage());
 		}
 		return output;
 	}
+
 	
-	//view user details by using the ID
 
-/*	public String getUserDetails(String userID)
-
-	{
-		String output = "";
-		try
-		{
-			Connection con = connect();
-			if (con == null)
-			{
-				return "Error while connecting to the database for reading";
-			}
-			// Prepare the html table to be displayed
-			output = "<table border='1' ><tr><th>Account No</th>"
-					+"<th>Name</th><th>NIC</th>"
-					+ "<th>Email</th>"
-					+ "<th>Phone</th>"
-					+ "<th>UserName</th>"
-					+ "<th>Password</th>";
-			String query = "select * from user where userId='"+userID+"'";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
-			// iterate through the rows in the result set
-			while (rs.next())
-			{ 
-				String userId = Integer.toString(rs.getInt("userId"));
-				String accountNo = rs.getString("accountNo");
-				String name = rs.getString("name");
-				String NIC = rs.getString("NIC");
-				String email = rs.getString("email");
-				String phone = rs.getString("phone");
-				String username = rs.getString("username");
-				String password = rs.getString("password");
-				// Add a row into the html table
-				output += "<tr><td>" + accountNo + "</td>";
-				output += "<td>" + name + "</td>";
-				output += "<td>" + NIC + "</td>";
-				output += "<td>" + email + "</td>"; 
-				output += "<td>" + phone + "</td>";
-				output += "<td>" + username + "</td>";
-				output += "<td>" + password + "</td>";
-				// buttons
-				output += "<input name='itemID' type='hidden' "
-						+ " value='" + userId + "'>"
-						+ "</form></td></tr>";
-			}
-			con.close();
-			// Complete the html table
-			output += "</table>";
-
-		}
-		catch (Exception e)
-		{
-			output = "Error while reading the user details";
-			System.err.println(e.getMessage());
-		}
-		return output;
-	}*/
-	 
 	 public String updateUserDetails(String userId,String accountNo,String name,String address,String NIC, String email, String phone, String username, String password)
 	   {
 		   String output = "";

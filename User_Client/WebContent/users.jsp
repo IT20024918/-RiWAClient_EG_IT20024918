@@ -16,27 +16,38 @@
  class="btn btn-primary"></div>
 <div class="container"><div class="row"><div class="col-6">
 <h1>User Management</h1>
-<form id="formItem" name="formItem">
+
+ 
+ <form id="formItem" name="formItem">
  Account No:
- <input id="itemCode" name="itemCode" type="text"
+ <input id="accountNo" name="accountNo" type="text"
  class="form-control form-control-sm">
- <br> Item name:
- <input id="itemName" name="itemName" type="text"
+ <br> Name:
+ <input id="Name" name="Name" type="text"
  class="form-control form-control-sm">
- <br> Item price:
- <input id="itemPrice" name="itemPrice" type="text"
+ <br> Address:
+ <input id="Address" name="Address" type="text"
  class="form-control form-control-sm">
- <br> Item description:
- <input id="itemDesc" name="itemDesc" type="text"
+ <br> NIC:
+ <input id="NIC" name="NIC" type="text"
  class="form-control form-control-sm">
- <br>
+ <br>Email:
+ <input id="Email" name="Email" type="text"
+ class="form-control form-control-sm">
+ <br>Phone:
+ <input id="Phone" name="Phone" type="text"
+ class="form-control form-control-sm">
+ <br>Username:
+ <input id="Username" name="Username" type="text"
+ class="form-control form-control-sm">
+ <br>Password:
+ <input id="Password" name="Password" type="text"
+ class="form-control form-control-sm">
  <input id="btnSave" name="btnSave" type="button" value="Save"
  class="btn btn-primary">
  <input type="hidden" id="hidItemIDSave"
  name="hidItemIDSave" value="">
- 
-
-</form>
+ </form>
 <div id="alertSuccess" class="alert alert-success"></div>
 <div id="alertError" class="alert alert-danger"></div>
 <br>
